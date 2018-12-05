@@ -11,7 +11,7 @@
  ## Usage
  
  ```bash 
- $ python run.py $DATE(YYYYMMDD) $OUTFILE
+ $ python3 run.py $DATE(YYYYMMDD) $OUTFILE
 ```
 
 ## DNS CHAOS Ripe Atlas Measuremnet parser
