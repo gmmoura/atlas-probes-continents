@@ -35,12 +35,18 @@ def read_ripe_probe_list(date):
     decompressed=decompressed.decode("utf-8")
 
     j= json.loads(decompressed)
-    outz=open(outfile,'a')
+    outz=open(outfile,'w')
 
-    for item in j['objects']:
-        tempDict=item
+    tempList=j['objects']
+    newDict=j
+    #reset objects
+    newDict['objects'] =[]
+    newList=[]
+    for item in tempList:
+
+
         tempCC=item['country_code']
-        print(tempCC)
+        #print(tempCC)
 
         #some handling of valid fieldds
         if type(tempCC) is not None and tempCC!=""  and str(tempCC)!="None":
@@ -56,7 +62,12 @@ def read_ripe_probe_list(date):
             item['intermediate_region']=intermediate_region
 
             #update json
-            json.dump(item,outz)
+
+            newList.append(item)
+        #update item
+    newDict['objects']=newList
+
+    json.dump(newDict,outz)
 
     outz.close()
 

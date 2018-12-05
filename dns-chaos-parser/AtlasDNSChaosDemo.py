@@ -1,13 +1,11 @@
 #this code parse and outputs some features from ripe into csv, enriched with the regions and continents and subregions
 
-import sys
-import json
 
-
-from ripe.atlas.sagan import DnsResult
 import json
 from  f4570above import f4570above
 import sys
+import requests
+import gzip
 
 
 def json_parser(f):
@@ -33,7 +31,7 @@ def json_parser(f):
                     for k in temp:
                         targetServer = k.RDATA
 
-                    answers.append(str(x.prb_id)+","+
+                    answers.append(
                         str(x.From) + "," + str(x.dst_addr) + "," + str(x.proto) + "," + str(targetServer) + "," + str(
                             x.rt) + "," + str(x.prb_id) + "," + str(x.timestamp) + "," + str(x.rcode))
 
@@ -56,6 +54,23 @@ def json_parser(f):
 
 
 
+def read_probe_data(f):
+    f = gzip.open(f, 'rb')
+    metadata = f.read()
+    metadata=metadata.decode("utf-8")
+    f.close()
+
+    appendDict=dict()
+
+    items=json.loads(metadata)
+
+    for k in items['objects']:
+        prid=k['id']
+        trailler=k['country_code']+","+k['continent']+","+k['sub_region']
+        appendDict[str(prid)]=trailler
+
+    return appendDict
+
 
 
 
@@ -63,15 +78,35 @@ def json_parser(f):
 if len(sys.argv)!=4:
     print("Wrong number of parameters\n")
     print(str(len(sys.argv)))
-    print("Usage:  python AtlasDNSChaosDemo.py $AtlasJSONFILE $probesMetadata $output.csv ")
+    print("Usage:  python AtlasDNSChaosDemo.py $AtlasMeasurement $probesMetadata.gz $output.csv ")
 else:
 
-    measurements=sys.argv[0]
-    probesMetadata=sys.argv[1]
-    output=sys.argv[2]
+    url=sys.argv[1]
+    probeFile=sys.argv[2]
+    output=sys.argv[3]
 
-    listtoPrint=json_parser(measurements)
-    print('wait here')
+    outz=open(output, 'w')
+
+
+    print("Downloading ripe database from " +url)
+    r = requests.get(url)
+
+    measurements=json_parser(r.content.decode("utf-8"))
+
+    print("readin probe metadata")
+    probeDict=read_probe_data(probeFile)
+
+    #now, with all the data in hands, we gotta for each measurmenet to add the trailler
+
+    for k in measurements:
+        #print("w")
+        probeID=k.split(",")[5]
+        trailler=probeDict[probeID.strip()]
+        outz.write(k+","+trailler+"\n")
+
+    outz.close()
+
+    print('END')
 
 
 

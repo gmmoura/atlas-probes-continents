@@ -1,11 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys
-from ripe.atlas.sagan import DnsResult, dns
-import json
+from ripe.atlas.sagan import dns
 from response4570 import response4570
 import base64
-import dns
-from dns import message
+import dns.message
 import traceback
 
 
