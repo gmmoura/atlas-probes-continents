@@ -28,7 +28,7 @@ else:
             sp=l.split(",")
             #if matches rcode and if the column value matches
             if sp[7].strip()==rcode and sp[int(matching_column)].strip()==matching_value.strip():
-                values.append(float(rtt_column.strip()))
+                values.append(float(sp[int(rtt_column)].strip()))
 
 
     print("#n_measurements,avg_rtt,median_rtt,fistquartile,3rdquartile,90percentile")
