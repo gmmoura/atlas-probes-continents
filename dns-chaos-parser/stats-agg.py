@@ -30,24 +30,19 @@ else:
             if sp[7].strip()==rcode and sp[int(matching_column)].strip()==matching_value.strip():
                 values.append(float(sp[int(rtt_column)].strip()))
 
+    print("output for candlesticks -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
+    print("#n_measurements,mean,Min 1stQuartile Median 3rdQuartile Max 90percentile")
 
-    print("#n_measurements,avg_rtt,median_rtt,fistquartile,3rdquartile,90percentile")
 
     print(str(len(values)) +","+
-          str(np.mean(values)) +","+
+          str(np.mean(values)) + "," +
+          str(np.minimum(values)) +","+
+          str(np.percentile(values, 25)) + ","+
           str(np.percentile(values,50))  +","+
           str(np.percentile(values,75))  +","+
-          str(np.percentile(values,90))
-          )
+          str(np.max(values))+","+
+          str(np.percentile(values, 90)) )
 
-    print("\n\nprinting transvesed\nn")
-    
-    print(str(len(values)) +"\n"+
-          str(np.mean(values)) +"\n"+
-          str(np.percentile(values,50))  +"\n"+
-          str(np.percentile(values,75))  +"\n"+
-          str(np.percentile(values,90))
-          )
 
     print("DONE")
 
