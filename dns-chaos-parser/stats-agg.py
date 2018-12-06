@@ -1,7 +1,7 @@
 #this file reads a csv of results from the parser  and allows to specify matching columns to do the calculations
 import sys
 import numpy as np
-import pandas as np
+
 
 print("Starting ")
 
