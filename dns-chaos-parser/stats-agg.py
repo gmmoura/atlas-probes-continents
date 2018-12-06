@@ -34,6 +34,8 @@ else:
     print("#n_measurements,mean,Min 1stQuartile Median 3rdQuartile Max 90percentile")
 
     max=str(np.max(values))
+    print(str(max))
+    print(str(type(max)))
 
     print(str(len(values)) +","+
           str(np.mean(values)) + "," +
