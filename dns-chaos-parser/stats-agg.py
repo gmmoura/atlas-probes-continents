@@ -33,17 +33,17 @@ else:
     print("output for candlesticks  -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
     print("#n_measurements,mean,Min 1stQuartile Median 3rdQuartile Max 90percentile")
 
-    max=str(np.max(values))
-    #print(str(max))
-    #print(str(type(max)))
 
-    print(str(len(values)) +","+
-          str(np.mean(values)) + "," +
-          str(np.minimum(values)) +","+
-          str(np.percentile(values, 25)) + ","+
-          str(np.percentile(values,50))  +","+
-          str(np.percentile(values,75))  +","+
-          str(max)  + "," +  str(np.percentile(values,90)))
+    print(str(len(values))
+          +","+
+          str(np.mean(values))
+          + "," + str(np.percentile(values, 25))
+          + "," + str(np.percentile(values, 50))
+          + "," + str(np.percentile(values, 75))
+          + "," + str(np.max(values))
+          + "," + str(np.percentile(values, 90))
+          )
+          #   +","+  str(np.max(values)) + "," + str(np.percentile(values,90)) )
 
     print("DONE")
 
