@@ -40,5 +40,14 @@ else:
           str(np.percentile(values,90))
           )
 
+    print("\n\nprinting transvesed\nn")
+    
+    print(str(len(values)) +"\n"+
+          str(np.mean(values)) +"\n"+
+          str(np.percentile(values,50))  +"\n"+
+          str(np.percentile(values,75))  +"\n"+
+          str(np.percentile(values,90))
+          )
+
     print("DONE")
 
