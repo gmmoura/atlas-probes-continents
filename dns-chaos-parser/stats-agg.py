@@ -30,7 +30,7 @@ else:
             if sp[7].strip()==rcode and sp[int(matching_column)].strip()==matching_value.strip():
                 values.append(float(sp[int(rtt_column)].strip()))
 
-    print("output for candlesticks -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
+    print("output for candlesticks  -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
     print("#n_measurements,mean,Min 1stQuartile Median 3rdQuartile Max 90percentile")
 
 
@@ -40,7 +40,7 @@ else:
           str(np.percentile(values, 25)) + ","+
           str(np.percentile(values,50))  +","+
           str(np.percentile(values,75))  +","+
-          str(np.max(values))+","+
+          str(np.amax(values))+","+
           str(np.percentile(values, 90)) )
 
 
