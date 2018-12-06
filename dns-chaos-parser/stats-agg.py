@@ -40,7 +40,7 @@ else:
           str(np.percentile(values, 25)) + ","+
           str(np.percentile(values,50))  +","+
           str(np.percentile(values,75))  +","+
-          str(np.amax(values))+","+
+          str(np.max(values)) +","+
           str(np.percentile(values, 90)) )
 
 
