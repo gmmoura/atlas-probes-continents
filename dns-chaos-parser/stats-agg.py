@@ -27,7 +27,7 @@ else:
 
             sp=l.split(",")
             #if matches rcode and if the column value matches
-            if sp[7].strip()==rcode and sp[matching_column].strip()==matching_value.strip():
+            if sp[7].strip()==rcode and sp[int(matching_column)].strip()==matching_value.strip():
                 values.append(float(rtt_column.strip()))
 
 
