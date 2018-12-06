@@ -34,8 +34,8 @@ else:
     print("#n_measurements,mean,Min 1stQuartile Median 3rdQuartile Max 90percentile")
 
     max=str(np.max(values))
-    print(str(max))
-    print(str(type(max)))
+    #print(str(max))
+    #print(str(type(max)))
 
     print(str(len(values)) +","+
           str(np.mean(values)) + "," +
@@ -43,9 +43,7 @@ else:
           str(np.percentile(values, 25)) + ","+
           str(np.percentile(values,50))  +","+
           str(np.percentile(values,75))  +","+
-          max + ","+
-          str(np.percentile(values, 90)) )
-
+          max  + ","+ str(np.percentile(values, 90)) )
 
     print("DONE")
 
