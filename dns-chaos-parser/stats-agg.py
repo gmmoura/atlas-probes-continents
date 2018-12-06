@@ -31,10 +31,11 @@ else:
                 values.append(float(sp[int(rtt_column)].strip()))
 
     print("output for candlesticks  -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
-    print("#n_measurements,mean,Min,1stQuartile, Median ,3rdQuartile, Max, 90percentile")
+    print("#n_measurements,mean,1stQuartile, Median ,3rdQuartile, Max, 90percentile")
 
 
-    print(str(len(values))
+    print(
+          str(len(values))
           +","+
           str(np.mean(values))
           + "," + str(np.percentile(values, 25))
