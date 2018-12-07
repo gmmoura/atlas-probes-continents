@@ -101,7 +101,7 @@ else:
     for k in measurements:
         #print("w")
         probeID=k.split(",")[5]
-        trailler="NA"
+        trailler="NA,NA"
         try:
             trailler=probeDict[probeID.strip()]
         except:
