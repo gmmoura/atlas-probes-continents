@@ -101,7 +101,11 @@ else:
     for k in measurements:
         #print("w")
         probeID=k.split(",")[5]
-        trailler=probeDict[probeID.strip()]
+        trailler="NA"
+        try:
+            trailler=probeDict[probeID.strip()]
+        except:
+            print("Probe not found: " + str(probeID))
         outz.write(k+","+trailler+"\n")
 
     outz.close()
