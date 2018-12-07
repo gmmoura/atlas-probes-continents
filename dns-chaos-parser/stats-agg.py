@@ -30,8 +30,7 @@ else:
             if len(sp)==11:
                 if sp[7].strip()==rcode and sp[int(matching_column)].strip()==matching_value.strip():
                     values.append(float(sp[int(rtt_column)].strip()))
-            else:
-                print(sp)
+
     print("output for candlesticks  -- http://gnuplot.sourceforge.net/docs_4.2/node243.html")
     print("#n_measurements,mean,1stQuartile, Median ,3rdQuartile, Max, 90percentile")
 
